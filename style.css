@@ -1,0 +1,374 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255, 166, 0) #000;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #000;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 166, 0);
+  border-radius: 20px;
+  border: 3px solid #000;
+}
+
+body {
+  font-family: "Dosis", sans-serif;
+  color: #000;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: rgb(255, 166, 0);
+  text-decoration: none;
+}
+
+.content {
+  max-width: 95vw;
+  margin: 0 auto;
+}
+
+.content {
+  margin: 60px;
+  text-align: center;
+}
+
+.nav {
+  font-size: 1rem;
+  position: fixed;
+  background-color: #222;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 7px 10px;
+}
+
+.nav.active {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav.active a {
+  color: #000;
+}
+
+.nav.active .container {
+  padding: 10px 0;
+}
+
+.nav .container a.current,
+.nav .container a:hover {
+  color: rgb(255, 166, 0);
+}
+
+.about {
+  background-image: url("images/palms.avif");
+}
+
+.about,
+.bookings,
+.rooms,
+.services {
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  margin-bottom: 20px;
+  z-index: -2;
+}
+
+.about::before,
+.bookings::before,
+.rooms::before,
+.services::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.about h1,
+.bookings h1,
+.rooms h1,
+.services h1 {
+  font-size: 70px;
+  margin: 10px;
+}
+
+.about p,
+.bookings p,
+.rooms p,
+.services p {
+  font-size: 25px;
+}
+
+.content h2 {
+  font-size: 50px;
+}
+
+.content p {
+  color: #555;
+  margin: 30px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.bookings {
+  background-image: url("images/bookings.avif");
+}
+
+.rooms {
+  background-image: url("images/rooms.avif");
+}
+
+.services {
+  background-image: url("images/yoga.avif");
+}
+
+.social-media {
+  font-size: 30px;
+  margin: 50px;
+  padding: 20px;
+}
+
+.social-media a {
+  padding: 10px;
+  margin: 10px;
+}
+
+.contacts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.copyright {
+  height: 150px;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.copyright h3 {
+  font-size: 10px;
+  text-align: center;
+  color: #797979;
+  padding: 0 15px 0 15px;
+}
+
+.sticky-btn {
+  font-family: inherit;
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+  background-color: #222;
+  color: rgb(255, 166, 0);
+  border: none;
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.close-btn {
+  color: rgb(255, 166, 0);
+  border: none;
+  background-color: transparent;
+  font-size: 25px;
+  position: absolute;
+  top: 5px;
+  right: 7px;
+}
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-container.show-modal {
+  display: block;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgb(255, 166, 0);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  width: 800px;
+  height: 500px;
+  animation-name: modalopen;
+  animation-duration: 0.5s;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .modal {
+    width: 400px;
+    height: 300px;
+  }
+
+  .social-media {
+    font-size: 15px;
+  }
+
+  .social-media a {
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .copyright h3 {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 495px) {
+  .about h1,
+  .rooms h1,
+  .bookings h1,
+  .services h1,
+  .about-info h2,
+  .rooms-info h2,
+  .bookings-info h2,
+  .services-info h2 {
+    font-size: 35px;
+  }
+
+  .sticky-btn,
+  .about p,
+  .rooms p,
+  .bookings p,
+  .services p,
+  .about-info p,
+  .rooms-info p,
+  .bookings-info p,
+  .services-info p {
+    font-size: 15px;
+  }
+
+  .content {
+    margin: 20px;
+  }
+
+  .nav {
+    font-size: 13px;
+  }
+
+  .nav ul li a {
+    padding: 3px;
+  }
+
+  .nav ul {
+    margin-right: 10px;
+  }
+
+  .copyright h3 {
+    font-size: 7px;
+  }
+
+  .modal {
+    width: 300px;
+    height: 200px;
+  }
+
+  .social-media {
+    font-size: 15px;
+    margin: 10px;
+  }
+
+  .modal h1 {
+    font-size: 20px;
+  }
+
+  .close-btn {
+    font-size: 20px;
+  }
+
+  .about {
+    background-image: url("images/palms.jpg");
+  }
+
+  .rooms {
+    background-image: url("images/rooms.jpg");
+  }
+
+  .bookings {
+    background-image: url("images/bookings.jpg");
+  }
+
+  .services {
+    background-image: url("images/yoga.jpg");
+  }
+}
